@@ -1,0 +1,28 @@
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white">{{currentUser.fullName}} To-Do list:</a>
+    <ul style="margin-bottom: 0;">
+      <button class="btn btn-info my-2 my-sm-0" (click)="onUserInfo()">User Info</button>
+      <button class="btn btn-danger my-2 my-sm-0" style="margin-left: 15px;" (click)="onLogout()">Logout</button>
+    </ul>    
+  </nav>
+
+
+  
+<div id="toDoWrapper">
+    <div class="card m-5" style="margin-bottom: -40px !important;">  
+        <div class="input-group">
+            <input type="text" style="background: white; color: black; border: none;" class="form-control" [(ngModel)]="newToDoTitle" placeholder="Input new ToDo item" aria-label="Input new ToDo item" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="onAddToDo()">Add ToDo</button>
+            </div>
+          </div>
+    </div>
+      
+  <div class="card m-5">    
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let todo of toDoItems">
+          <input type="checkbox" ><h6 style="display: inline; font-weight: bolder;"> {{ todo.title }}</h6> <p style="display: inline;">  &nbsp;Details: {{ todo.text }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
