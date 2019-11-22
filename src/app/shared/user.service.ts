@@ -55,7 +55,15 @@ export class UserService {
     return this.http.get(this.BaseURI + '/todoitem');
   }
 
+  getToDoItem(toDoItemId) {
+    return this.http.get(this.BaseURI + '/todoitem/' + toDoItemId);
+  }
+
   postToDoItem(toDoItem) {
     return this.http.post(this.BaseURI + '/todoitem', toDoItem);
+  }
+
+  putToDoItem(toDoItemId, toDoItem) {
+    return this.http.put(this.BaseURI + '/todoitem?id=' + toDoItemId, toDoItem);
   }
 }

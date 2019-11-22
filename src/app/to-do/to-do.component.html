@@ -21,7 +21,10 @@
   <div class="card m-5">    
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let todo of toDoItems">
-          <input type="checkbox" ><h6 style="display: inline; font-weight: bolder;"> {{ todo.title }}</h6> <p style="display: inline;">  &nbsp;Details: {{ todo.text }}</p>
+          <input type="checkbox" [(ngModel)]="todo.isDone" (ngModelChange)="switchToDo(todo)">
+          <h6 style="display: inline; font-weight: bolder;"> {{ todo.title }}</h6> 
+          <p style="display: inline;">  &nbsp;Details: {{ todo.text }}</p>
+          <a [routerLink]="['/edit', todo.id]" style="float: right;"><span class="fas fa-edit"></span></a>
       </li>
     </ul>
   </div>

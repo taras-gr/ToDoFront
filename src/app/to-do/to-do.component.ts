@@ -64,4 +64,21 @@ export class ToDoComponent implements OnInit {
     )
   }
 
+  switchToDo(toDoItem) {
+    let toDoItemToPut = {
+      title: toDoItem.title,
+      text: toDoItem.text,
+      isDone: toDoItem.isDone,
+    }
+
+    this.service.putToDoItem(toDoItem.id, toDoItemToPut).subscribe(
+      res => {
+
+      },
+      err => {
+        console.log(err);
+      }
+    ); 
+  }
+
 }

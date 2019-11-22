@@ -1,0 +1,9 @@
+.myToast-top-right {
+    top: 60px;
+    right: 40px;
+}
+
+#toast-container {
+    top: 160px !important;
+    right: 40px !important;
+}

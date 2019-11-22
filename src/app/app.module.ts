@@ -14,6 +14,7 @@ import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ToDoComponent } from './to-do/to-do.component';
+import { EditToDoComponent } from './edit-to-do/edit-to-do.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ToDoComponent } from './to-do/to-do.component';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    ToDoComponent
+    ToDoComponent,
+    EditToDoComponent
   ],
   imports: [
     BrowserModule,
