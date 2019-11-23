@@ -1,6 +1,6 @@
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" style="margin-top: -10px; padding-top: 0; padding-bottom: 67px;">
     <a class="navbar-brand text-white">{{currentUser.fullName}} To-Do list:</a>
-    <ul style="margin-bottom: 0;">
+    <ul>
       <button class="btn btn-info my-2 my-sm-0" (click)="onUserInfo()">User Info</button>
       <button class="btn btn-danger my-2 my-sm-0" style="margin-left: 15px;" (click)="onLogout()">Logout</button>
     </ul>    
@@ -11,21 +11,36 @@
 <div id="toDoWrapper">
     <div class="card m-5" style="margin-bottom: -40px !important;">  
         <div class="input-group">
-            <input type="text" style="background: white; color: black; border: none;" class="form-control" [(ngModel)]="newToDoTitle" placeholder="Input new ToDo item" aria-label="Input new ToDo item" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" (click)="onAddToDo()">Add ToDo</button>
-            </div>
+          <div class="inputMember col-sm-10">
+              <input type="text" style="background: white; color: black; border: none;" class="form-control" [(ngModel)]="newToDoTitle" placeholder="Input new ToDo item" aria-label="Input new ToDo item" aria-describedby="basic-addon2">
           </div>
+          <div class="col-sm-2 inputMember input-group-append">
+              <button style="margin-top: 7px;" class="btn btn-outline-secondary" type="button" (click)="onAddToDo()">Add ToDo</button>
+          </div>
+        </div>
     </div>
       
-  <div class="card m-5">    
+  <div class="card m-5" style="margin-top: 50px !important">    
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let todo of toDoItems">
-          <input type="checkbox" [(ngModel)]="todo.isDone" (ngModelChange)="switchToDo(todo)">
-          <h6 style="display: inline; font-weight: bolder;"> {{ todo.title }}</h6> 
-          <p style="display: inline;">  &nbsp;Details: {{ todo.text }}</p>
+      <div *ngFor="let todo of toDoItems">
+        <li *ngIf="!todo.isDone" style="padding-bottom: 0 !important;" class="list-group-item">
+          <label>
+            <input type="checkbox" [(ngModel)]="todo.isDone" (ngModelChange)="switchToDo(todo)" class="filled-in" checked="checked" />
+            <span *ngIf="!todo.isDone"><h6 style="color: black; display: inline; font-weight: bolder;"> {{ todo.title }}</h6> </span>            
+          </label>          
+            <p *ngIf="!todo.isDone" style="display: inline;">  &nbsp;Details: {{ todo.text }}</p>            
+            <a [routerLink]="['/edit', todo.id]" style="float: right;"><span class="fas fa-edit"></span></a>
+        </li>
+
+      <li *ngIf="todo.isDone" style="padding-bottom: 0 !important; background-color: rgba(4, 197, 130, 0.2);" class="list-group-item">
+        <label>
+          <input type="checkbox" [(ngModel)]="todo.isDone" (ngModelChange)="switchToDo(todo)" class="filled-in" checked="checked" />          
+          <span *ngIf="todo.isDone"><h6 style="text-decoration: line-through; color: black; display: inline; font-weight: bolder;"> {{ todo.title }}</h6> </span>
+        </label>     
+          <p *ngIf="todo.isDone" style="text-decoration: line-through; display: inline;">  &nbsp;Details: {{ todo.text }}</p>
           <a [routerLink]="['/edit', todo.id]" style="float: right;"><span class="fas fa-edit"></span></a>
       </li>
+    </div>
     </ul>
   </div>
 </div>

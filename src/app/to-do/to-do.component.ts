@@ -20,6 +20,7 @@ export class ToDoComponent implements OnInit {
     this.service.getToDoItems().subscribe(
       res => {
         this.toDoItems = res;
+        this.toDoItems.sort(function(a, b){ return a.isDone - b.isDone });
       },
       err => {
         console.log(err);
@@ -50,13 +51,11 @@ export class ToDoComponent implements OnInit {
       title: this.newToDoTitle,
       text: '',
       isDone: false,
-    }
-
-    this.toDoItems.push(toDoItem);
+    }    
     
     this.service.postToDoItem(toDoItem).subscribe(
       res => {
-
+        this.toDoItems.push(res);
       },
       err => {
         console.log(err);
@@ -70,7 +69,7 @@ export class ToDoComponent implements OnInit {
       text: toDoItem.text,
       isDone: toDoItem.isDone,
     }
-
+    this.toDoItems.sort(function(a, b){ return a.isDone - b.isDone });
     this.service.putToDoItem(toDoItem.id, toDoItemToPut).subscribe(
       res => {
 

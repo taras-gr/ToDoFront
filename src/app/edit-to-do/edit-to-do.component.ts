@@ -23,6 +23,7 @@ export class EditToDoComponent implements OnInit, OnDestroy {
 
     this.service.getToDoItem(this.id).subscribe(
       res => {
+        console.log(res);
         this.toDoItem = res;
       },
       err => {
@@ -32,6 +33,7 @@ export class EditToDoComponent implements OnInit, OnDestroy {
 
     this.service.getUserProfile().subscribe(
       res => {
+        console.log(res);
         this.currentUser = res;
       },
       err => {
@@ -41,7 +43,6 @@ export class EditToDoComponent implements OnInit, OnDestroy {
   }
 
   onEditToDo(toDoItem) {
-    //M.toast({html: 'I am a toast!'})
     this.service.putToDoItem(toDoItem.id, toDoItem).subscribe(
       res => {
 
@@ -53,12 +54,22 @@ export class EditToDoComponent implements OnInit, OnDestroy {
     this.toastr.success('ToDoItem successfully edited!', null, {
       disableTimeOut: false,
       tapToDismiss: false,
-     // toastClass: "myToast-top-right",
       closeButton: true,
       positionClass:'myToast-top-right',
       timeOut: 20000,
       progressBar: false
     });
+  }
+
+  onDeleteToDo(toDoItem){
+    this.service.deleteToDoItem(toDoItem.id).subscribe(
+      res => {
+        this.router.navigate(['/todo']);
+      },
+      err => {
+        console.log(err);
+      }
+    ); 
   }
 
   ngOnDestroy() {
@@ -68,4 +79,7 @@ export class EditToDoComponent implements OnInit, OnDestroy {
   onUserInfo() {
     this.router.navigate(['/home']);
   }
+
+
+
 }

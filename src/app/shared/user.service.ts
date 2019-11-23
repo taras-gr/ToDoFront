@@ -66,4 +66,8 @@ export class UserService {
   putToDoItem(toDoItemId, toDoItem) {
     return this.http.put(this.BaseURI + '/todoitem?id=' + toDoItemId, toDoItem);
   }
+
+  deleteToDoItem(toDoItemId){
+    return this.http.delete(this.BaseURI + '/todoitem?id=' + toDoItemId);
+  }
 }
