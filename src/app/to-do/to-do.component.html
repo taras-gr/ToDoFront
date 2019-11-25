@@ -11,12 +11,15 @@
 <div id="toDoWrapper">
     <div class="card m-5" style="margin-bottom: -40px !important;">  
         <div class="input-group">
-          <div class="inputMember col-sm-10">
-              <input type="text" style="background: white; color: black; border: none;" class="form-control" [(ngModel)]="newToDoTitle" placeholder="Input new ToDo item" aria-label="Input new ToDo item" aria-describedby="basic-addon2">
-          </div>
-          <div class="col-sm-2 inputMember input-group-append">
-              <button style="margin-top: 7px;" class="btn btn-outline-secondary" type="button" (click)="onAddToDo()">Add ToDo</button>
-          </div>
+          <div class="inputMember col-sm-12">
+              <div id="forInput" style="float: left; width: calc(100% - 107px);">
+                  <input type="text" style="background: white; color: black; border: none;" class="form-control" [(ngModel)]="newToDoTitle" placeholder="Input new ToDo item" aria-label="Input new ToDo item" aria-describedby="basic-addon2">
+              </div>
+              <div id="forButton" style="float: right;">
+                  <button style="margin-top: 7px;" class="btn btn-outline-secondary" type="button" (click)="onAddToDo()">Add ToDo</button>
+              </div>
+              
+            </div>
         </div>
     </div>
       
