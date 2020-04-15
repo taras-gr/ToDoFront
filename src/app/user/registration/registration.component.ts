@@ -1,6 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(public service: UserService, private toastr: ToastrService) { }
+  constructor(public service: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.formModel.reset();
@@ -18,8 +19,9 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     this.service.register().subscribe(
       (res: any) => {
-        if (res.succeeded) {
-          this.service.formModel.reset();
+        if (res.token != undefined) {
+          localStorage.setItem('token', res.token);
+          this.router.navigateByUrl('/home');
           this.toastr.success('New user created!', 'Registration successful.');
         } else {
           res.errors.forEach(element => {
