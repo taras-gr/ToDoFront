@@ -59,6 +59,7 @@ export class EditToDoComponent implements OnInit, OnDestroy {
       timeOut: 20000,
       progressBar: false
     });
+    this.router.navigate(['/todo']);
   }
 
   onDeleteToDo(toDoItem){
@@ -80,6 +81,10 @@ export class EditToDoComponent implements OnInit, OnDestroy {
     this.router.navigate(['/home']);
   }
 
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
 
 
 }

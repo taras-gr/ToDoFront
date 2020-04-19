@@ -1,5 +1,5 @@
-  <nav class="navbar navbar-dark bg-dark" style="margin-top: -10px; padding-top: 0; padding-bottom: 67px;">
-    <a class="navbar-brand text-white">{{currentUser.fullName}} To-Do list:</a>
+  <nav class="navbar navbar-dark bg-dark" style="margin-top: -10px; padding-top: 10px; padding-bottom: 67px;">
+    <a class="navbar-brand text-white">{{currentUser.fullName}} list:</a>
     <ul>
       <button class="btn btn-info my-2 my-sm-0" (click)="onUserInfo()">User Info</button>
       <button class="btn btn-danger my-2 my-sm-0" style="margin-left: 15px;" (click)="onLogout()">Logout</button>
@@ -9,7 +9,7 @@
 
   
 <div id="toDoWrapper">
-    <div class="card m-5" style="margin-bottom: -40px !important;">  
+    <div class="card m-5" style="margin: 0 !important;">  
         <div class="input-group">
           <div class="inputMember col-sm-12">
               <div id="forInput" style="float: left; width: calc(100% - 107px);">
@@ -23,7 +23,7 @@
         </div>
     </div>
       
-  <div class="card m-5" style="margin-top: 50px !important">    
+  <div id="todolist" class="card m-5">    
     <ul class="list-group">
       <div *ngFor="let todo of toDoItems">
         <li *ngIf="!todo.isDone" style="padding-bottom: 0 !important;" class="list-group-item">
